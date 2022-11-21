@@ -1,0 +1,68 @@
+/* iOS Cordova Tweak */
+.device-cordova.device-ios {
+  height: 100vh;
+}
+
+/* Left Panel right border when it is visible by breakpoint */
+.panel-left.panel-in-breakpoint:before {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background: rgba(0,0,0,0.1);
+  content: '';
+  z-index: 6000;
+}
+
+/* Hide navbar link which opens left panel when it is visible by breakpoint */
+.panel-left.panel-in-breakpoint ~ .view .navbar .panel-open[data-panel="left"] {
+  display: none;
+}
+
+/*
+  Extra borders for main view and left panel for iOS theme when it behaves as panel (before breakpoint size)
+*/
+.ios .panel-left:not(.panel-in-breakpoint).panel-in ~ .view-main:before,
+.ios .panel-left:not(.panel-in-breakpoint).panel-closing ~ .view-main:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background: rgba(0,0,0,0.1);
+  content: '';
+  z-index: 6000;
+}
+
+/*
+.page-content {
+  background-color: white;
+}
+*/
+
+.navbar-inner {
+  background-color: rebeccapurple;
+}
+.title-large .title-large-text{
+  color: darkslateblue;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.navbar .title, .navbar a.link, .navbar-inner .link.icon-only.panel-open.nav-link.ripple-inset {
+  color: white;
+}
+
+.card {
+  border: 2px solid purple;
+  padding: 15px 5px;
+}
+
+.card-header {
+  color: purple;
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
