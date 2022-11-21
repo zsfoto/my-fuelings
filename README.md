@@ -1,4 +1,4 @@
-# Mohács Infó
+# Tankolásaim
 
 ## Framework7 CLI Options
 
@@ -6,11 +6,11 @@ Framework7 app created with following options:
 
 ```
 {
-  "cwd": "d:\\Works\\fw7\\mohacs-app-new",
+  "cwd": "d:\\Works\\fw7\\my-fuellings",
   "type": [
     "cordova"
   ],
-  "name": "Mohács Infó",
+  "name": "Tankolásaim",
   "framework": "vue",
   "template": "split-view",
   "bundler": "vite",
