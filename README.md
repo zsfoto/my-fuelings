@@ -6,7 +6,7 @@ Framework7 app created with following options:
 
 ```
 {
-  "cwd": "d:\\Works\\fw7\\my-fuellings",
+  "cwd": "d:\\Works\\fw7\\MyFuelings",
   "type": [
     "cordova"
   ],

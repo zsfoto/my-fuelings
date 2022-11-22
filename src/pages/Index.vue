@@ -4,17 +4,18 @@
 	  <f7-nav-right>
         <f7-link icon-ios="f7:menu" icon-aurora="f7:menu" icon-md="material:menu" panel-open="left" class="nav-link"></f7-link>
       </f7-nav-right>
-	  <f7-nav-title sliding>My fuelfills</f7-nav-title>
-      <f7-nav-title-large>My fuelfills</f7-nav-title-large>
+	  <f7-nav-title sliding>My fuelings</f7-nav-title>
+      <f7-nav-title-large>My fuelings</f7-nav-title-large>
     </f7-navbar>
 
     <!--f7-block-title>Lists</f7-block-title-->
+	
     <f7-list>
-		<f7-list-item v-for="(i, key) in lists" 
+		<f7-list-item v-for="(i, key) in list" 
 			:key="key" 
-			:title="`${i.date}`" 
+			:title="`${i.created.substring(0, 10).replaceAll('-','.')}.`"
 			:link="`/view/${i.id}/`"
-		>{{ i.price }} Ft</f7-list-item>
+		>{{ i.petrol_station_filled_liter }} liter • {{ i.petrol_station_discount_price.toLocaleString('hu-HU') }} Ft</f7-list-item>
     </f7-list>
 
 	<div class="fab fab-extended fab-right-bottom color-red" @click="Add">
@@ -30,7 +31,9 @@
 
 
 <script>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+//import { f7, f7ready } from 'framework7-vue';
+import axios from 'axios';
 
 export default {
     props: {
@@ -39,34 +42,30 @@ export default {
     },	
 	
     setup(props) {
-		const lists = ref({});
-		
-		lists.value = [
-			{id: '12006', date: '2022.10.06.', liter: '38,18', price:'15752'},
-			{id: '12005', date: '2022.09.30.', liter: '14,68', price:'23752'},
-			{id: '12004', date: '2022.09.27.', liter: '22,28', price:'8752'},
-			{id: '12003', date: '2022.09.19.', liter: '33,38', price:'12752'},
-			{id: '12002', date: '2022.08.13.', liter: '12,48', price:'24752'},
-			{id: '12001', date: '2022.08.02.', liter: '32,18', price:'18752'},
+		const list = ref({});
 
-		]
+		onMounted(() => {
 		
-		
-		//const alertLoginData = () => {
-			//f7.dialog.alert('Username: ' + username.value + '<br>Password: ' + password.value, () => {
-			//	f7.loginScreen.close();
+			axios
+				.get('http://fueling.vzsfoto.hu/api.php')
+				.then(response => (list.value = response.data))
+					.catch(error => console.log(error))				
+
+			//console.log(list.value)
+
+			//f7.dialog.alert('aaaa<br>Password', () => {
+			//	//f7.loginScreen.close();
 			//});
-		//}
-		
+
+		});
 		
 		const Add = () => {
 			props.f7router.navigate('/add/')
-			//alert('aaa')
 		}
 		
 		
       return {
-        lists, Add
+        list, Add
       }
 	}
 }

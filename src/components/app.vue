@@ -100,11 +100,11 @@
       const device = getDevice();
       // Framework7 Parameters
       const f7params = {
-        name: 'Mohács Infó', // App name
-        theme: 'auto', // Automatic theme detection
+        name: 'My Fuelings', 	// App name
+        theme: 'auto', 			// Automatic theme detection
 
 
-        id: 'io.framework7.mohacs.info', // App bundle ID
+        id: 'io.framework7.fuelings.my', // App bundle ID
         // App store
         store: store,
         // App routes
